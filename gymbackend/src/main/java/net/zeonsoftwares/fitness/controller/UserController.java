@@ -64,6 +64,7 @@
 package net.zeonsoftwares.fitness.controller;
 
 import net.zeonsoftwares.fitness.entity.UserEntity;
+import net.zeonsoftwares.fitness.entity.WorkoutPlanEntity;
 import net.zeonsoftwares.fitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,7 +82,7 @@ public class UserController {
 
     // Endpoint to get a user by user_id
     @GetMapping("/{user_id}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable("user_id") String userId) {
+    public ResponseEntity<UserEntity> getUserById(@PathVariable("user_id") String userId) { 
         // Find the user by user_id using the repository
         UserEntity user = userRepository.findById(userId).orElse(null);
 
@@ -131,5 +132,27 @@ public class UserController {
         // Save the user directly to the database
         UserEntity newUser = userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    }
+
+   
+
+    //endpoint to add user_workout_plan name to the user
+    @PutMapping("/{user_id}/workout_plan")
+    public ResponseEntity<UserEntity> addWorkoutPlanToUser(@PathVariable("user_id") String userId,
+            @RequestParam WorkoutPlanEntity workoutPlanName) {
+        // Find the user by user_id using the repository
+        UserEntity user = userRepository.findById(userId).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.notFound().build(); // Return 404 if user not found
+        }
+
+        // Add the workout plan name to the user
+        user.setWorkoutPlan(workoutPlanName);
+
+        // Save the updated user directly to the database
+        userRepository.save(user);
+
+        return ResponseEntity.ok(user); // Return the updated user
     }
 }

@@ -92,4 +92,20 @@ public class WorkoutsController {
                 ))
                 .collect(Collectors.toList());
     }
+
+
+    //get workout infromation by workout name
+
+        @GetMapping("/workout")
+        public WorkoutsDto getWorkoutByName(@RequestParam String workoutName) {
+            WorkoutsEntity workout = workoutsRepository.findByWorkoutName(workoutName);
+            return new WorkoutsDto(
+                    workout.getWorkoutName(),
+                    workout.getWorkoutType(),
+                    workout.getTargetMuscle(),
+                    workout.getEquipmentRequired(),
+                    workout.getWorkoutDescription(),
+                    workout.getAdmin() != null ? workout.getAdmin().getAdminId() : null  // Handle null admin
+            );
+        }
 }

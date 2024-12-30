@@ -47,5 +47,8 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "user_workout_plan_name", referencedColumnName = "workout_plan_name")
     private WorkoutPlanEntity workoutPlan;
+
+    //set method for workout plan
+    
 }
 

@@ -4,11 +4,13 @@ import net.zeonsoftwares.fitness.entity.Consists_of_Entity;
 import net.zeonsoftwares.fitness.entity.WorkoutPlanEntity;
 import net.zeonsoftwares.fitness.entity.WorkoutsEntity;
 import net.zeonsoftwares.fitness.repository.Consists_of_Repository;
+import net.zeonsoftwares.fitness.repository.TrainerRepository;
 import net.zeonsoftwares.fitness.repository.WorkoutPlanRepository;
 import net.zeonsoftwares.fitness.repository.WorkoutsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import net.zeonsoftwares.fitness.entity.TrainerEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,9 @@ public class TrainerController {
 
     @Autowired
     private Consists_of_Repository consistsOfRepository;
+
+    @Autowired
+    private TrainerRepository trainerRepository;
 
     @PostMapping("/add_workout_to_plan")
     public ResponseEntity<String> addWorkoutToPlan(
@@ -75,4 +80,15 @@ public class TrainerController {
         List<Consists_of_Entity> workouts = consistsOfRepository.findByWorkoutPlan_WorkoutPlanName(workoutPlanName);
         return ResponseEntity.ok(workouts);
     }
+    
+    
+    
+   //endpoints to get all trainers
+
+    @GetMapping("/all")
+    public List<TrainerEntity> getAllTrainers() {
+        return trainerRepository.findAll();
+    }
+
+   
 }
