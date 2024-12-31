@@ -1,4 +1,4 @@
-package net.javaguides.Food_Dictionary_Backend.WebConfig;
+package net.zeonsoftwares.fitness.WebConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

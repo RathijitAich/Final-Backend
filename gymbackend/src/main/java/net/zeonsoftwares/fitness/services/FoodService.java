@@ -1,7 +1,6 @@
-package net.javaguides.Food_Dictionary_Backend.Service;
-
-import net.javaguides.Food_Dictionary_Backend.Entity.Food;
-import net.javaguides.Food_Dictionary_Backend.Repository.FoodRepository;
+package net.zeonsoftwares.fitness.services;
+import net.zeonsoftwares.fitness.entity.Food;
+import net.zeonsoftwares.fitness.repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

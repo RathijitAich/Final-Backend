@@ -1,4 +1,4 @@
-package net.javaguides.Food_Dictionary_Backend.Entity;
+package net.zeonsoftwares.fitness.entity;
 
 import jakarta.persistence.*;
 

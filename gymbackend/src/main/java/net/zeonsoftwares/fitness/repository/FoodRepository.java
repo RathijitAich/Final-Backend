@@ -1,6 +1,6 @@
-package net.javaguides.Food_Dictionary_Backend.Repository;
+package net.zeonsoftwares.fitness.repository;
 
-import net.javaguides.Food_Dictionary_Backend.Entity.Food;
+import net.zeonsoftwares.fitness.entity.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
