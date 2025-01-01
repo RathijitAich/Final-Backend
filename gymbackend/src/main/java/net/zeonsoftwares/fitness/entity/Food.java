@@ -1,13 +1,22 @@
 package net.zeonsoftwares.fitness.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Food")
+@Table(name = "food") // Table name in lowercase
 public class Food {
 
     @Id
-    @Column(name = "Food_Name")
+    @Column(name = "Food_Name" , nullable = false) // Match column name
     private String foodName;
 
     @Column(name = "Calorie")
@@ -22,55 +31,10 @@ public class Food {
     @Column(name = "Carbohydrate")
     private int carbohydrate;
 
-    @Column(name = "Food_Admin_Id")
-    private String foodAdminId;
+    @ManyToOne
+    @JoinColumn(name = "food_admin_id", referencedColumnName = "admin_id")// Foreign key to AdminEntity (admin_id is the primary key)
+    @JsonIgnore // Prevent serialization of the admin field
+    private AdminEntity admin;        // The admin managing this workout
 
-    // Getters and Setters
-    public String getFoodName() {
-        return foodName;
-    }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
-
-    public int getCalorie() {
-        return calorie;
-    }
-
-    public void setCalorie(int calorie) {
-        this.calorie = calorie;
-    }
-
-    public int getProtein() {
-        return protein;
-    }
-
-    public void setProtein(int protein) {
-        this.protein = protein;
-    }
-
-    public int getFat() {
-        return fat;
-    }
-
-    public void setFat(int fat) {
-        this.fat = fat;
-    }
-
-    public int getCarbohydrate() {
-        return carbohydrate;
-    }
-
-    public void setCarbohydrate(int carbohydrate) {
-        this.carbohydrate = carbohydrate;
-    }
-
-    public String getFoodAdminId() {
-        return foodAdminId;
-    }
-
-    public void setFoodAdminId(String foodAdminId) {
-        this.foodAdminId = foodAdminId;
-    }
 }
