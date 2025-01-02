@@ -63,6 +63,7 @@
 
 package net.zeonsoftwares.fitness.controller;
 
+import net.zeonsoftwares.fitness.entity.DietPlanEntity;
 import net.zeonsoftwares.fitness.entity.UserEntity;
 import net.zeonsoftwares.fitness.entity.WorkoutPlanEntity;
 import net.zeonsoftwares.fitness.repository.UserRepository;
@@ -149,6 +150,26 @@ public class UserController {
 
         // Add the workout plan name to the user
         user.setWorkoutPlan(workoutPlanName);
+
+        // Save the updated user directly to the database
+        userRepository.save(user);
+
+        return ResponseEntity.ok(user); // Return the updated user
+    }
+
+    //endpoint to add user_diet_plan name to the user
+    @PutMapping("/{user_id}/diet_plan")
+    public ResponseEntity<UserEntity> addDietPlanToUser(@PathVariable("user_id") String userId,
+            @RequestParam DietPlanEntity dietPlanName) {
+        // Find the user by user_id using the repository
+        UserEntity user = userRepository.findById(userId).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.notFound().build(); // Return 404 if user not found
+        }
+
+        user.setDietPlan(dietPlanName); // Add the diet plan name to the user
+        
 
         // Save the updated user directly to the database
         userRepository.save(user);
