@@ -25,33 +25,70 @@ public class DietPlanController {
         List<String> healthConditions = (List<String>) formData.get("healthConditions");
     
         // Initialize the response string
-        String response;
+        String response = "No matching condition found";
     
         // Check for specific health condition
         boolean hasDiabetes = healthConditions.contains("Diabetes");
+
+        boolean hasHeartProblem = healthConditions.contains("Heart Problem");
     
         // Build response string based on conditions
         if (bmi < 18.5) {
-            if ("veg".equalsIgnoreCase(dietType) && hasDiabetes) {
-                response = "<18.5_Veg_Diabetes";
-            } else if ("non-veg".equalsIgnoreCase(dietType) && hasDiabetes) {
-                response = "<18.5_Non-Veg_Diabetes";
-            } else {
-                response = "<18.5_" + dietType + "_No-Diabetes";
+            if ("veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = "<18.5_Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = "<18.5_Veg_Heart_Problem";
+                } else {
+                    response = "<18.5_Veg_No-Condition";
+                }
+            } else if ("non-veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = "<18.5_Non-Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = "<18.5_Non-Veg_Heart_Problem";
+                } else {
+                    response = "<18.5_Non-Veg_No-Condition";
+                }
             }
         } else if (bmi >= 18.5 && bmi <= 24.9) {
-            if ("veg".equalsIgnoreCase(dietType) && hasDiabetes) {
-                response = "18.5-24.9_Veg_Diabetes";
-            } else {
-                response = "18.5-24.9_" + dietType + "_No-Diabetes";
+            if ("veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = "18.5-24.9_Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = "18.5-24.9_Veg_Heart_Problem";
+                } else {
+                    response = "18.5-24.9_Veg_No-Condition";
+                }
+            } else if ("non-veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = "18.5-24.9_Non-Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = "18.5-24.9_Non-Veg_Heart_Problem";
+                } else {
+                    response = "18.5-24.9_Non-Veg_No-Condition";
+                }
             }
         } else { // BMI >= 25
-            if ("veg".equalsIgnoreCase(dietType) && hasDiabetes) {
-                response = ">=25_Veg_Diabetes";
-            } else {
-                response = ">=25_" + dietType + "_No-Diabetes";
+            if ("veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = ">=25_Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = ">=25_Veg_Heart_Problem";
+                } else {
+                    response = ">=25_Veg_No-Condition";
+                }
+            } else if ("non-veg".equalsIgnoreCase(dietType)) {
+                if (hasDiabetes) {
+                    response = ">=25_Non-Veg_Diabetes";
+                } else if (hasHeartProblem) {
+                    response = ">=25_Non-Veg_Heart_Problem";
+                } else {
+                    response = ">=25_Non-Veg_No-Condition";
+                }
             }
         }
+        
     
         // Return the response
         return ResponseEntity.ok(response);
