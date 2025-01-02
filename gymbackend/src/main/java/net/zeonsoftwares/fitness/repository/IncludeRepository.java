@@ -12,5 +12,7 @@ public interface IncludeRepository extends JpaRepository<IncludesEntity, Include
 
   //Method to find foods by diet plan name
     List<IncludesEntity> findByDietPlan_DietPlanNameContaining(String dietPlanName);
+
+    List<IncludesEntity> findByDietPlan_DietPlanName(String dietPlanName);
     
 }

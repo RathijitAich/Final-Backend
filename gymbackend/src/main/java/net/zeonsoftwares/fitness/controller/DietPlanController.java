@@ -7,8 +7,13 @@
 
 package net.zeonsoftwares.fitness.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import net.zeonsoftwares.fitness.entity.DietPlanEntity;
+import net.zeonsoftwares.fitness.entity.Food;
+import net.zeonsoftwares.fitness.repository.DietPlanRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +21,16 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/diet-plan")
 public class DietPlanController {
+
+    @Autowired
+    private DietPlanRepository dietPlanRepository;
+
+
+    //endpoint to get all the diet plans
+    @GetMapping("/all")
+    public List<DietPlanEntity> getAllDietPlans() {
+        return dietPlanRepository.findAll();
+    }
 
     @PostMapping
     public ResponseEntity<String> acceptDietPlanData(@RequestBody Map<String, Object> formData) {
