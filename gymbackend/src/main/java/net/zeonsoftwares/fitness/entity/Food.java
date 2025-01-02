@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Food {
 
     @Id
-    @Column(name = "Food_Name" , nullable = false) // Match column name
+    @Column(name = "Food_Name", nullable = false) // Match column name
     private String foodName;
 
     @Column(name = "Calorie")
@@ -32,9 +32,12 @@ public class Food {
     private int carbohydrate;
 
     @ManyToOne
-    @JoinColumn(name = "food_admin_id", referencedColumnName = "admin_id")// Foreign key to AdminEntity (admin_id is the primary key)
+    @JoinColumn(name = "food_admin_id", referencedColumnName = "admin_id") // Foreign key to AdminEntity (admin_id is the primary key)
     @JsonIgnore // Prevent serialization of the admin field
-    private AdminEntity admin;        // The admin managing this workout
+    private AdminEntity admin; // The admin managing this workout
 
-
+    // Custom getter for foodName
+    public String getFoodName() {
+        return (foodName != null && foodName.length() > 1) ? foodName.substring(1) : foodName;
+    }
 }
