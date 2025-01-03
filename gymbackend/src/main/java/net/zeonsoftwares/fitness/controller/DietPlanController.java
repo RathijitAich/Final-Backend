@@ -8,6 +8,7 @@
 package net.zeonsoftwares.fitness.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.Problem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,7 @@ public class DietPlanController {
         boolean hasDiabetes = healthConditions.contains("Diabetes");
 
         boolean hasHeartProblem = healthConditions.contains("Heart Problem");
+
     
         // Build response string based on conditions
         if (bmi < 18.5) {
@@ -54,7 +56,7 @@ public class DietPlanController {
                     response = "<18.5_Veg_Diabetes";
                 } else if (hasHeartProblem) {
                     response = "<18.5_Veg_Heart_Problem";
-                } else {
+                } else  {
                     response = "<18.5_Veg_No-Condition";
                 }
             } else if ("non-veg".equalsIgnoreCase(dietType)) {
