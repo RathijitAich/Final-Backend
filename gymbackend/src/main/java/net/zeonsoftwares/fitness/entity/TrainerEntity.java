@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Trainer") // Updated to match schema
 public class TrainerEntity {
 
     @Id
