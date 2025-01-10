@@ -66,10 +66,14 @@ package net.zeonsoftwares.fitness.controller;
 import net.zeonsoftwares.fitness.entity.DietPlanEntity;
 import net.zeonsoftwares.fitness.entity.UserEntity;
 import net.zeonsoftwares.fitness.entity.WorkoutPlanEntity;
+import net.zeonsoftwares.fitness.entity.IncludesEntity;
+import net.zeonsoftwares.fitness.repository.IncludeRepository;
 import net.zeonsoftwares.fitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
@@ -80,6 +84,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private IncludeRepository includeRepository;
 
     // Endpoint to get a user by user_id
     @GetMapping("/{user_id}")
@@ -175,5 +182,19 @@ public class UserController {
         userRepository.save(user);
 
         return ResponseEntity.ok(user); // Return the updated user
+    }
+
+    //endpoint to get the diet plan of a user
+    @GetMapping("/{user_id}/diet_plan")
+    public List<IncludesEntity> getDietPlanOfUser(@PathVariable("user_id") String userId) {
+        // Find the user by user_id using the repository
+        UserEntity user = userRepository.findById(userId).orElse(null);
+
+        DietPlanEntity dietPlan = user.getDietPlan(); // Get the diet plan of the user
+
+    
+        
+        return includeRepository.findByDietPlan_DietPlanNameContaining(dietPlan.getDietPlanName());
+        
     }
 }
