@@ -1,4 +1,5 @@
 package net.zeonsoftwares.fitness.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,22 +13,23 @@ import lombok.Setter;
 @Entity
 public class TrainerEntity {
 
-            @Id
-            @Column(name = "trainer_id", nullable = false)
-            private String trainerId;
+    @Id
+    @Column(name = "Trainer_ID", nullable = false) // Updated to match schema
+    private String trainerId;
 
-            @Column(name = "trainer_name", nullable = false)
-            private String trainerName;
+    @Column(name = "Trainer_Name", nullable = false) // Updated to match schema
+    private String trainerName;
 
-            @Column(name = "trainer_email", nullable = false)
-            private String trainerEmail;
+    @Column(name = "Email", nullable = false) // Updated to match schema
+    private String trainerEmail;
 
-            @Column(name = "trainer_password", nullable = false)
-            private String trainerPassword;
+    @Column(name = "Password", nullable = false) // Updated to match schema
+    private String trainerPassword;
 
-            @Column(name = "trainer_phone", nullable = false)
-            private String trainerPhone;
+    @Column(name = "Phone_Number", nullable = false) // Updated to match schema
+    private String trainerPhone;
+
     @ManyToOne
-    @JoinColumn(name = "trainer_admin_id", referencedColumnName = "admin_id")  // Foreign key to AdminEntity (admin_id is the primary key)
-    private AdminEntity admin;        // The admin managing this trainer
+    @JoinColumn(name = "Trainer_Admin_ID", referencedColumnName = "Admin_ID")  // Updated to match schema
+    private AdminEntity admin; // The admin managing this trainer
 }

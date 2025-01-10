@@ -107,7 +107,6 @@ public class DietPlanController {
         }
         
     
-        // Return the response
         return ResponseEntity.ok(response);
     }
 }

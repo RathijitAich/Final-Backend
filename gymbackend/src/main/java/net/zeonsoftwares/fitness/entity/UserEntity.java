@@ -11,44 +11,42 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users") // Define table name if needed
+@Table(name = "User") // Updated to match schema
 public class UserEntity {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "User_ID") // Updated to match schema
     private String userId;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "Username", nullable = false) // Updated to match schema
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "Password", nullable = false) // Updated to match schema
     private String password;
 
-    @Column(name = "gender")
+    @Column(name = "Gender") // Updated to match schema
     private String gender;
 
-    @Column(name = "height")
+    @Column(name = "Height") // Updated to match schema
     private double height;
 
-    @Column(name = "weight")
+    @Column(name = "Weight") // Updated to match schema
     private double weight;
 
-    @Column(name = "health_issue")
+    @Column(name = "Health_Issue") // Updated to match schema
     private String healthIssue;
 
     @ManyToOne
-    @JoinColumn(name = "user_trainer_id", referencedColumnName = "trainer_id")
+    @JoinColumn(name = "User_Trainer_ID", referencedColumnName = "Trainer_ID") // Updated to match schema
     private TrainerEntity trainer;
 
     @ManyToOne
-    @JoinColumn(name = "user_diet_plan_name", referencedColumnName = "diet_plan_name")
+    @JoinColumn(name = "User_Diet_Plan_Name", referencedColumnName = "Diet_Plan_Name") // Updated to match schema
     private DietPlanEntity dietPlan;
 
     @ManyToOne
-    @JoinColumn(name = "user_workout_plan_name", referencedColumnName = "workout_plan_name")
+    @JoinColumn(name = "User_Workout_Plan", referencedColumnName = "Workout_Plan_Name") // Updated to match schema
     private WorkoutPlanEntity workoutPlan;
 
-    //set method for workout plan
-    
+    // set method for workout plan
 }
-

@@ -11,17 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "consists_of") // Table name in lowercase
+@Table(name = "Consists_Of") // Updated to match schema
 @IdClass(ConsistsOfId.class)
-public class Consists_of_Entity {
+public class Consists_of_Entity { // Renamed class to match naming conventions
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "C_workout_plan_name", referencedColumnName = "workout_plan_name", nullable = false)
+    @JoinColumn(name = "C_Workout_Plan_Name", referencedColumnName = "Workout_Plan_Name", nullable = false) // Updated to match schema
     private WorkoutPlanEntity workoutPlan;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "C_workout_name", referencedColumnName = "workout_name", nullable = false)
+    @JoinColumn(name = "C_Workout_Name", referencedColumnName = "Workout_Name", nullable = false) // Updated to match schema
     private WorkoutsEntity workout;
 }

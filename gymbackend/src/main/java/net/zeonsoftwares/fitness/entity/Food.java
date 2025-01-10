@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "food") // Table name in lowercase
+@Table(name = "Food") // Table name in lowercase
 public class Food {
 
     @Id
@@ -32,7 +32,7 @@ public class Food {
     private int carbohydrate;
 
     @ManyToOne
-    @JoinColumn(name = "food_admin_id", referencedColumnName = "admin_id") // Foreign key to AdminEntity (admin_id is the primary key)
+    @JoinColumn(name = "Food_Admin_ID", referencedColumnName = "Admin_ID") // Foreign key to AdminEntity (Admin_ID is the primary key)
     @JsonIgnore // Prevent serialization of the admin field
     private AdminEntity admin; // The admin managing this workout
 

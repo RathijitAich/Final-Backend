@@ -10,21 +10,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Admin") // Explicitly specify the table name
 public class AdminEntity {
+    @Id
+    @Column(name = "Admin_ID", nullable = false)
+    private String adminId;
 
-        @Id
-        @Column(name = "admin_id", nullable = false)
-        private String adminId;
+    @Column(name = "Admin_Name", nullable = false)
+    private String adminName;
 
-        @Column(name = "admin_name", nullable = false)
-        private String adminName;
+    @Column(name = "Email", nullable = false)
+    private String adminEmail;
 
-        @Column(name = "admin_email", nullable = false)
-        private String adminEmail;
+    @Column(name = "Password", nullable = false)
+    private String adminPassword;
 
-        @Column(name = "admin_password", nullable = false)
-        private String adminPassword;
-
-        @Column(name = "admin_phone", nullable = false)
-        private String adminPhone;
+    @Column(name = "Phone_Number", nullable = false)
+    private String adminPhone;
 }
+

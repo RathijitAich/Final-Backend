@@ -12,27 +12,27 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "workouts") // Table name in lowercase
+@Table(name = "Workout") // Updated to match schema
 public class WorkoutsEntity {
 
     @Id
-    @Column(name = "workout_name", nullable = false) // Match column name
+    @Column(name = "Workout_Name", nullable = false) // Updated to match schema
     private String workoutName;
 
-    @Column(name = "workout_type", nullable = false)
+    @Column(name = "Workout_Type", nullable = false) // Updated to match schema
     private String workoutType;
 
-    @Column(name = "target_muscle")
+    @Column(name = "Target_Muscle") // Updated to match schema
     private String targetMuscle;
 
-    @Column(name = "equipment_required")
+    @Column(name = "Equipment") // Updated to match schema
     private String equipmentRequired;
 
-    @Column(name = "workout_description")
+    @Column(name = "Description") // Updated to match schema
     private String workoutDescription;
 
     @ManyToOne
-    @JoinColumn(name = "workout_admin_id", referencedColumnName = "admin_id")// Foreign key to AdminEntity (admin_id is the primary key)
+    @JoinColumn(name = "Workout_Admin_ID", referencedColumnName = "Admin_ID") // Updated to match schema
     @JsonIgnore // Prevent serialization of the admin field
-    private AdminEntity admin;        // The admin managing this workout
+    private AdminEntity admin; // The admin managing this workout
 }

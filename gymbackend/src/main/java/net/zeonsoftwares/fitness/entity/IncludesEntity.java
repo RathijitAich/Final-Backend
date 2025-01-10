@@ -11,17 +11,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "includes") // Table name in lowercase
+@Table(name = "Includes") // Updated to match schema
 @IdClass(IncludesId.class)
 public class IncludesEntity {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "I_diet_plan_name", referencedColumnName = "diet_plan_name", nullable = false)
+    @JoinColumn(name = "I_Diet_Plan_Name", referencedColumnName = "Diet_Plan_Name", nullable = false) // Updated to match schema
     private DietPlanEntity dietPlan;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "I_food_name", referencedColumnName = "Food_name", nullable = false)
+    @JoinColumn(name = "I_Food_Name", referencedColumnName = "Food_Name", nullable = false) // Updated to match schema
     private Food food;
 }
+
