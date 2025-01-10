@@ -17,11 +17,11 @@ public class IncludesEntity {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "diet_plan_name", referencedColumnName = "diet_plan_name", nullable = false)
+    @JoinColumn(name = "I_diet_plan_name", referencedColumnName = "diet_plan_name", nullable = false)
     private DietPlanEntity dietPlan;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "food_name", referencedColumnName = "Food_name", nullable = false)
+    @JoinColumn(name = "I_food_name", referencedColumnName = "Food_name", nullable = false)
     private Food food;
 }

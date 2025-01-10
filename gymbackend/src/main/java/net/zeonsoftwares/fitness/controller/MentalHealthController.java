@@ -114,7 +114,7 @@ public class MentalHealthController {
 
     }
 
-    // Define a nested class to hold question and answer data
+  
     // List<QuestionAndAnswer> means that the data will be in the form of a list of
     // QuestionAndAnswer objects
     // list is the data structure that holds the data , it is like vector in c++

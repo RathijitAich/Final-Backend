@@ -17,11 +17,11 @@ public class Consists_of_Entity {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "workout_plan_name", referencedColumnName = "workout_plan_name", nullable = false)
+    @JoinColumn(name = "C_workout_plan_name", referencedColumnName = "workout_plan_name", nullable = false)
     private WorkoutPlanEntity workoutPlan;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "workout_name", referencedColumnName = "workout_name", nullable = false)
+    @JoinColumn(name = "C_workout_name", referencedColumnName = "workout_name", nullable = false)
     private WorkoutsEntity workout;
 }

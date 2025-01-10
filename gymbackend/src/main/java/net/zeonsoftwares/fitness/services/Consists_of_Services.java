@@ -17,11 +17,17 @@ public class Consists_of_Services {
         this.repository = repository;
     }
 
-    /**
-     * Fetches workout plans based on workout plan name.
-     * @param workoutPlanName The workout plan name to filter by.
-     * @return A list of Consists_of_Dto objects containing workout plan and workout details.
-     */
+   
+
+     /*
+      the query that has been used here is 
+     @Query("SELECT c FROM Consists_of_Entity c WHERE c.workoutPlan.workoutPlanName LIKE %:workoutPlanName%")
+
+     it is written in my sql like 
+     select * from consists_of where workout_plan_name = '%workoutPlanName%';
+      */
+
+      
     public List<Consists_of_Dto> getPlansByWorkoutPlanName(String workoutPlanName) {
         // Fetch workout plans filtered by workoutPlanName
         List<Consists_of_Entity> entities = repository.findByWorkoutPlan_WorkoutPlanNameContaining(workoutPlanName);
@@ -41,3 +47,5 @@ public class Consists_of_Services {
                 .collect(Collectors.toList());
     }
 }
+
+

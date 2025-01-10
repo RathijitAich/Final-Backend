@@ -11,7 +11,11 @@ public class FoodService {
 
     @Autowired
     private FoodRepository foodRepository;
+   
 
+    /*
+     * select * from food;
+     */
     public List<Food> getAllFood() {
         return foodRepository.findAll();
     }
