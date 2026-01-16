@@ -108,6 +108,13 @@ public class TrainerController {
         return trainerRepository.findAll();
     }
 
+
+    // endpoints to get all the workout plans
+    @GetMapping("/workout-plans")
+    public List<WorkoutPlanEntity> getAllWorkoutPlans() {
+        return workoutPlanRepository.findAll();
+    }
+
     // endpoints to get trainer by id
     @GetMapping("/get/{trainerId}")
     public ResponseEntity<TrainerEntity> getTrainerById(@PathVariable String trainerId) {
